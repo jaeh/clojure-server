@@ -1,0 +1,16 @@
+/target
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+magic-server.iml
+.idea
+figwheel_server.log
+resources/nginx
+resources/public/js
+resources/public/css
+resources/public/*.html

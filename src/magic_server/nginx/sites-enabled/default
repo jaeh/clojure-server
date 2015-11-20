@@ -1,0 +1,9 @@
+server {
+  listen 80;
+  listen [::]:80;
+  server_name HOSTNAME;
+  root /www/data;
+  index index.html;
+
+ROUTES
+}

@@ -1,7 +1,7 @@
 build:
 	lein run
 
-docker-build: build
+docker-build:
 	docker build -t magic-host .
 
 docker-run:
@@ -17,3 +17,7 @@ docker: docker-build docker-run
 
 clean:
 	rm resources target -r
+
+prod: docker-build docker-run
+
+all: build

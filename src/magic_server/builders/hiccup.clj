@@ -8,10 +8,10 @@
 
 (defn build [page]
   (timbre/debug "hiccup started...")
-  (let [{:keys [content file]} page
-        output-file (str (-> dirs :target :html) file)]
+  (let [{:keys [content src-file]} page
+        output-file (str (-> dirs :target :html) src-file)]
 
-    (if-not (or file content output-file)
+    (if-not (or src-file content output-file)
       (timbre/error "html input or output-file not specified in page:" page " Exiting")
       (do
         (timbre/debug "spitting html to " output-file)

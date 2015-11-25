@@ -8,13 +8,12 @@
                  [filevents "0.1.0"]
                  [hiccup "1.0.5"]
                  [garden "1.3.0-SNAPSHOT"]
+                 [me.raynes/fs "1.4.6"]
                  [figwheel-sidecar "0.4.1" :scope "provided"]]
 
   :main magic-server.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}}
-
-
 
   :cljsbuild { :builds [{:id "min"
                          :source-paths ["src"]

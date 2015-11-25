@@ -4,7 +4,8 @@
             [hiccup.core :as hiccup]
             [hiccup.page :as hpage]
             [magic-server.utils.core :refer [safe-spit]]
-            [magic-server.globals :refer [dirs hostname nginx-config]]))
+            [magic-server.pages.wizardsatwork.globals :refer [hostname]]
+            [magic-server.globals :refer [dirs nginx-config]]))
 
 (defn copy-config []
   (timbre/debug "copy nginx.conf")
@@ -31,7 +32,8 @@
     (safe-spit output-file config)))
 
 (defn build [args]
-  (let [{:keys [file routes]} args]
+  (timbre/debug "args" args)
+  (let [{:keys [routes]} args]
     (println "nginx config generation started...")
     (copy-config)
     (gen-config routes)))

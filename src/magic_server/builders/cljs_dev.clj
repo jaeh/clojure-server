@@ -3,26 +3,19 @@
             [figwheel-sidecar.repl :as r]
             [figwheel-sidecar.repl-api :as ra]))
 
-(defn build []
+(defn build [args]
   "Build the clojurescript sources to javascript and spit them to resources/public/js"
-  (ra/start-figwheel!
-    {:figwheel-options {}
-     :build-ids ["dev"]
-     :all-builds
-     [{:id "dev"
-       :figwheel true
-       :source-paths ["src/magic_server/cljs/"]
-       :compiler {:main 'magic-server.cljs.core
-                  :asset-path "js"
-                  :output-to "resources/public/js/main.js"
-                  :output-dir "resources/public/js"
-                  :verbose true}}
-      {:id "prod"
-        :figwheel true
-        :source-paths ["src/magic_server/cljs/"]
-        :compiler {:main 'magic-server.cljs.core
-                   :asset-path "js"
-                   :output-to "resources/public/js/main.js"
-                   :output-dir "resources/public/js"
-                   :verbose true}}]})
+  (let [{:keys [src-dir dist-dir dist-file namespace]} args]
+    (ra/start-figwheel!
+      {:figwheel-options {}
+       :build-ids ["dev"]
+       :all-builds
+       [{:id "dev"
+         :figwheel true
+         :source-paths [src-dir]
+         :compiler {:main namespace
+                    :asset-path "js"
+                    :output-to (str dist-dir dist-file)
+                    :output-dir dist-dir
+                    :verbose true}}]}))
   (ra/cljs-repl))

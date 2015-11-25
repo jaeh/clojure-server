@@ -4,3 +4,6 @@
 (defn safe-spit [file content]
   (make-parents file)
   (spit file content))
+
+(defn ln [s]
+  (str s "\n"))

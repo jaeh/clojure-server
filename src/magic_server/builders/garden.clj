@@ -9,6 +9,6 @@
   "Uses garden to build the css and spit it to the resources dir"
   (timbre/debug "garden started...")
   (let [{:keys [content src-file]} style
-        output-file (str root-dir src-file)]
+        output-file (str root-dir "public/" src-file)]
     (timbre/debug "spitting css to " output-file)
     (safe-spit output-file (garden/css content))))

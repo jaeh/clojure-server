@@ -31,7 +31,10 @@ docker-run-prod:
 
 # removes ALL docker containers
 rmContainers:
-	docker rm $(shell docker ps -a -q)
+	containers=$(shell docker ps -a -q)
+ifneq (${containers}"t","t")
+	docker rm ${containers}
+endif
 
 # removes ALL docker images
 rmImages:

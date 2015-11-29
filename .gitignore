@@ -7,7 +7,7 @@ pom.xml.asc
 *.class
 /.lein-*
 /.nrepl-port
-magic-server.iml
+server.iml
 .idea
 figwheel_server.log
 resources
